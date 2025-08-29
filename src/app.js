@@ -5,6 +5,10 @@ const errorHandler = require('./middlewares/error.middleware');
 const app = express();
 app.use(express.json());
 
+app.get('/', (_req, res) => {
+    res.send('BFHL API is up');
+});
+
 app.use('/bfhl', bfhlRouter);
 
 app.use(errorHandler);

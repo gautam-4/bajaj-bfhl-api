@@ -2,7 +2,14 @@
     "rewrites": [
         {
             "source": "/bfhl",
-            "destination": "/api"
+            "destination": "/api/bfhl"
+        }
+    ],
+    "redirects": [
+        {
+            "source": "/api/bfhl",
+            "destination": "/bfhl",
+            "permanent": false
         }
     ]
 }
