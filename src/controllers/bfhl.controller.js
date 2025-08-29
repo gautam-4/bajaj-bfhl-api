@@ -6,7 +6,16 @@ const buildUserId = (config) => `${config.fullName}_${config.dobDDMMYYYY}`;
 const postBfhl = (req, res, next) => {
     try {
         // Lazy-load env-backed config so that importing this module doesn't throw
-        const config = require('../config/appConfig');
+        let config;
+        try {
+            config = require('../config/appConfig');
+        } catch (e) {
+            // Surface which env var is missing to ease deployment debugging
+            return res.status(500).json({
+                is_success: false,
+                error: e && e.message ? e.message : 'Configuration error',
+            });
+        }
         const { data } = req.body;
 
         // defensive: if not array, validation middleware should catch, but double-check
