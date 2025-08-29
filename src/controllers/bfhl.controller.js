@@ -35,4 +35,10 @@ const postBfhl = (req, res, next) => {
     }
 };
 
-module.exports = { postBfhl };
+const getBfhl = (req, res) => {
+    res.status(200).json({
+        operation_code: 1
+    });
+};
+
+module.exports = { postBfhl, getBfhl };

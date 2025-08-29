@@ -1,15 +1,13 @@
 {
+    "functions": {
+        "api/index.js": {
+            "runtime": "@vercel/node"
+        }
+    },
     "rewrites": [
         {
-            "source": "/bfhl",
-            "destination": "/api/bfhl"
-        }
-    ],
-    "redirects": [
-        {
-            "source": "/api/bfhl",
-            "destination": "/bfhl",
-            "permanent": false
+            "source": "/(.*)",
+            "destination": "/api/index.js"
         }
     ]
 }
