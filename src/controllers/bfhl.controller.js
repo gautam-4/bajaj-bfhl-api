@@ -1,11 +1,12 @@
-const config = require('../config/appConfig');
 const { processInputData } = require('../utils/process.util');
 
 // build user_id from FULL_NAME and DOB; fullName already lowercase
-const buildUserId = () => `${config.fullName}_${config.dobDDMMYYYY}`;
+const buildUserId = (config) => `${config.fullName}_${config.dobDDMMYYYY}`;
 
 const postBfhl = (req, res, next) => {
     try {
+        // Lazy-load env-backed config so that importing this module doesn't throw
+        const config = require('../config/appConfig');
         const { data } = req.body;
 
         // defensive: if not array, validation middleware should catch, but double-check
@@ -20,7 +21,7 @@ const postBfhl = (req, res, next) => {
 
         return res.status(200).json({
             is_success: true,
-            user_id: buildUserId(), 
+            user_id: buildUserId(config), 
             email: config.email,
             roll_number: config.rollNumber,
             odd_numbers: result.odd_numbers,
