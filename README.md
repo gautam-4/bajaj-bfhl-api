@@ -15,3 +15,27 @@
 npm install
 # start local server
 npm run dev
+```
+
+## Testing
+
+```powershell
+curl.exe --% -X POST https://bajaj-bfhl-api-five.vercel.app/bfhl -H "Content-Type: application/json" -d "{\"data\":[\"1\",\"2\",\"a\",\"B\",\"$\",\"12c\",\"-3\"]}"
+```
+
+Sample response:
+
+```json
+{
+  "is_success": true,
+  "user_id": "john_doe_17091999",
+  "email": "john@xyz.com",
+  "roll_number": "ABCD123",
+  "odd_numbers": ["1","-3"],
+  "even_numbers": ["2"],
+  "alphabets": ["A","B"],
+  "special_characters": ["$","12c"],
+  "sum": "0",
+  "concat_string": "CbA"
+}
+```
